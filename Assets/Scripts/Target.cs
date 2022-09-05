@@ -6,7 +6,7 @@ public class Target : MonoBehaviour
 {
     void Hit()
     {
-        Destory(gameObject);
+        Destroy(gameObject);
         //GameManager.Instance.Score();
     }
 }
