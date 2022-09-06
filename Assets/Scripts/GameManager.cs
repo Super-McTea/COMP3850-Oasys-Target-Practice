@@ -6,8 +6,20 @@ public class GameManager : MonoBehaviour
 {
     private int hit, miss;
     private float scoreTimer, score;
+    static private GameManager instance;
 
-    // Start is called before the first frame update
+    static public GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                Debug.LogError("There is no GameManager instance in the scene.");
+            }
+            return instance;
+        }
+    }
+
     void Start()
     {
         hit = 0;
