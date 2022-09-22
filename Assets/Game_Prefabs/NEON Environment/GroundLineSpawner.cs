@@ -6,8 +6,8 @@ public class GroundLineSpawner : MonoBehaviour
 {
     public GameObject cubes;
     public float timer=1.5f;
-    public float Start_Cor = 57.5f;
-    public float End_cor = -40f;
+    public float Start_Cor = 65f;
+    public float End_cor = -65f;
 
     private float time1;
     private Vector3 position;
@@ -21,12 +21,12 @@ public class GroundLineSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(time1<=0)
-        {
-            Instantiate(cubes, transform.position,Quaternion.identity);
-            time1 = timer;
-        }
-        time1 -= Time.deltaTime;
+        //if(time1<=0)
+        //{
+        //    Instantiate(cubes, transform.position,Quaternion.identity);
+        //    time1 = timer;
+        //}
+        //time1 -= Time.deltaTime;
     }
     void SpawnLines()
     {

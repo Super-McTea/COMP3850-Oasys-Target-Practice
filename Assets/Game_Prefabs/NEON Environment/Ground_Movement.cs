@@ -15,12 +15,12 @@ public class Ground_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Time.deltaTime * -1 * transform.forward * movementSpeed;
-        destroy_time -= Time.deltaTime;
+        //transform.position += Time.deltaTime * -1 * transform.forward * movementSpeed;
+        //destroy_time -= Time.deltaTime;
 
-        if(destroy_time<=0)
-        {
-            Destroy(this.gameObject);
-        }
+        //if(destroy_time<=0)
+        //{
+       //     Destroy(this.gameObject);
+       // }
     }
 }
