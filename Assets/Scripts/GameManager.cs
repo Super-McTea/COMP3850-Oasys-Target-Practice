@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        instance = this;
         hit = 0;
         miss = 0;
     }
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score = hit / (hit + miss) * 100;
+        score = hit / (hit + miss + 1) * 100;
     }
 
     public void Hit()

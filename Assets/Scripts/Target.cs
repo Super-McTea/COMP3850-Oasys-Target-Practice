@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public float scoreAge;
-    private float scoreTimer;
+    public float scoreAge, lifetime;
+    private float scoreTimer, lifeTimer;
+    public TargetSpawner spawner;
     private bool hit;
+    private bool active;
+    public TargetSpawner spawn;
 
     void Start()
     {
-        scoreTimer = scoreAge;
+        lifeTimer = lifetime + Time.time;
+        scoreTimer = scoreAge + Time.time;
         hit = false;
+        active = true;
     }
 
     private void Update()
@@ -26,7 +31,23 @@ public class Target : MonoBehaviour
             {
                 GameManager.Instance.MissOver();
             }
+            Debug.Log("Score age over");
             Destroy(gameObject);
+        }
+
+        if(lifeTimer < Time.time && active)
+        {
+            active = false;
+            if(!hit)
+            {
+                GameManager.Instance.Miss();
+            }
+            spawn.target = null;
+            for(int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
+            Debug.Log("Took too long to hit");
         }
     }
 
@@ -34,6 +55,7 @@ public class Target : MonoBehaviour
     {
         //Destroy(gameObject);
         //GameManager.Instance.Score();
+        hit = true;
     }
 
     //if collides with bullet, hit = true and gameManager.Hit()
