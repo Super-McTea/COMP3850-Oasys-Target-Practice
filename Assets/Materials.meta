@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Materials.meta
 guid: f33d2f55149a28b42bf0bf12edd321d7
+========
+guid: ec9942b1f7ba30346b386a1f6e80ba59
+>>>>>>>> shubham:Assets/Nokobot.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

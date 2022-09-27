@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs.meta
 guid: 7b25f5c9316e35c4785c49cc2ba93531
 folderAsset: yes
+========
+guid: 3e2d436cf8cd5b54a878d325c0de145b
+>>>>>>>> shubham:Assets/Nokobot/Modern Guns - Handgun/Asset Collection.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
