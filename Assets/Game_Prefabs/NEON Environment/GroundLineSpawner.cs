@@ -18,16 +18,6 @@ public class GroundLineSpawner : MonoBehaviour
         time1 = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if(time1<=0)
-        //{
-        //    Instantiate(cubes, transform.position,Quaternion.identity);
-        //    time1 = timer;
-        //}
-        //time1 -= Time.deltaTime;
-    }
     void SpawnLines()
     {
         for (float i = Start_Cor; i>End_cor ; i -= 2.5f)
