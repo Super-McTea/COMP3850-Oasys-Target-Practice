@@ -51,6 +51,12 @@ public class Target : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider col)
+    {
+        Hit();
+        Debug.Log("TARGET HIT");
+    }
+
     void Hit()
     {
         //Destroy(gameObject);
