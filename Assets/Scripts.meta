@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts.meta
 guid: b1276bb8501474cd79d63ca17dd07074
 folderAsset: yes
+========
+guid: 21037762408ec1942ae9b93b6b1413e7
+>>>>>>>> shubham:Assets/Nokobot/Modern Guns - Handgun/URP/ModernGuns_Handgun_v1.2_URP.unitypackage.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
