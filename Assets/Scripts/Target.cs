@@ -51,10 +51,13 @@ public class Target : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider col)
+    void OnTriggerEnter(Collider col)
     {
-        Hit();
-        Debug.Log("TARGET HIT");
+        hit = true;
+        Debug.Log("TARGET HIT"); 
+        //Just made it here for now for a workable build- ask zach the intended way
+        GameManager.Instance.HitOver();
+        Destroy(gameObject);
     }
 
     void Hit()

@@ -27,6 +27,7 @@ public class BulletDespawn : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {   
         Destroy(this.gameObject);
+        Debug.Log("Bullet Hit!");
     }
     
 }
