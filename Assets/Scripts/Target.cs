@@ -10,7 +10,6 @@ public class Target : MonoBehaviour
     private bool hit;
     private bool active;
     public TargetSpawner spawn;
-    private Renderer targetRenderer;
     private Collider hitbox;
 
     void Start()
@@ -19,7 +18,6 @@ public class Target : MonoBehaviour
         scoreTimer = scoreAge + Time.time;
         hit = false;
         active = true;
-        targetRenderer = GetComponent<Renderer>();
         hitbox = GetComponent<Collider>();
     }
 
@@ -43,15 +41,14 @@ public class Target : MonoBehaviour
             active = false;
             if(!hit)
             {
+                Debug.Log("TARGET MISS");
                 GameManager.Instance.Miss();
             }
             spawn.target = null;
-            //code for real target prefabs
-            //for(int i = 0; i < transform.childCount; i++)
-            //{
-            //    transform.GetChild(i).gameObject.SetActive(false);
-            //}
-            targetRenderer.enabled = false;
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                    transform.GetChild(i).gameObject.SetActive(false);
+            }
             hitbox.enabled = false;
         }
     }
@@ -62,7 +59,11 @@ public class Target : MonoBehaviour
         Debug.Log("TARGET HIT"); 
         //Just made it here for now for a workable build- ask zach the intended way
         GameManager.Instance.Hit();
-        targetRenderer.enabled = false;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(false);
+
+        }
         hitbox.enabled = false;
     }
 

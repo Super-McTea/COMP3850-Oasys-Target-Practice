@@ -40,8 +40,8 @@ public class TargetSpawner : MonoBehaviour
 
         //keep in mind every target will show up within hideMin and hideMax time
         //e.g. min = 10-score, max = 14-score, every target shown every 4 secs
-        hideMin = 10 - score / 10;
-        hideMax = 14 - score / 10;
+        hideMin = 5;
+        hideMax = 9;
         hideTimer = Random.Range(hideMin, hideMax) + Time.time;
     }
 }
