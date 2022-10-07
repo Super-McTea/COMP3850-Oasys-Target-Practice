@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1834238988188238794}
   - component: {fileID: 4210146808810519023}
   m_Layer: 10
-  m_Name: Cylinder
+  m_Name: Testing Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629d4f40961bed4438f3726bea673637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreAge: 5
+  scoreAge: 30
   lifetime: 3
   spawner: {fileID: 0}
   spawn: {fileID: 0}

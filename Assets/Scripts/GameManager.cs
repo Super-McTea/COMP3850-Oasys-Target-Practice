@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private int hit, miss;
-    private float scoreTimer, score;
+    private float scoreTimer, score, hit, miss;
     static private GameManager instance;
 
     static public GameManager Instance
@@ -24,23 +23,33 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         hit = 0;
+        score = 0;
         miss = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        score = hit / (hit + miss + 1) * 100;
+        if(hit > 0)
+        {
+            score = hit / (hit + miss) * 100;
+        }
+        else
+        {
+            score = 0;
+        }
     }
 
     public void Hit()
     {
         hit++;
+        Debug.Log("score: " + score);
     }
 
     public void Miss()
     {
         miss++;
+        Debug.Log("score: " + score);
     }
 
     public void HitOver()
@@ -51,5 +60,10 @@ public class GameManager : MonoBehaviour
     public void MissOver()
     {
         miss--;
+    }
+
+    public float GetScore()
+    {
+        return score;
     }
 }

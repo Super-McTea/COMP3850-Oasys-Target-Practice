@@ -8,11 +8,13 @@ public class TargetSpawner : MonoBehaviour
     private float hideMin, hideMax, hideTimer;
     public Target target;
     public Target prefab;
+    private GameManager gameManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         Restart();
     }
 
@@ -21,10 +23,12 @@ public class TargetSpawner : MonoBehaviour
     {
         if(target == null && hideTimer < Time.time)
         {
+            score = gameManager.GetScore();
             target = Instantiate(prefab);
             target.transform.position = transform.position;
             target.spawn = this;
-            Debug.Log("Target spawned");
+            target.lifetime = 1 + (100 - score) / 20;
+            Debug.Log("Target spawned with life of " + target.lifetime);
             //target.lifetime = whatever/score or something
             Restart();
         }
@@ -32,8 +36,7 @@ public class TargetSpawner : MonoBehaviour
 
     public void Restart()
     {
-        score = Random.Range(30, 90);
-        Debug.Log("new target waiting with score of " + score);
+        score = gameManager.GetScore();
 
         //keep in mind every target will show up within hideMin and hideMax time
         //e.g. min = 10-score, max = 14-score, every target shown every 4 secs

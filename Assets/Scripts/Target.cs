@@ -10,6 +10,8 @@ public class Target : MonoBehaviour
     private bool hit;
     private bool active;
     public TargetSpawner spawn;
+    private Renderer targetRenderer;
+    private Collider hitbox;
 
     void Start()
     {
@@ -17,6 +19,8 @@ public class Target : MonoBehaviour
         scoreTimer = scoreAge + Time.time;
         hit = false;
         active = true;
+        targetRenderer = GetComponent<Renderer>();
+        hitbox = GetComponent<Collider>();
     }
 
     private void Update()
@@ -31,7 +35,6 @@ public class Target : MonoBehaviour
             {
                 GameManager.Instance.MissOver();
             }
-            Debug.Log("Score age over");
             Destroy(gameObject);
         }
 
@@ -43,11 +46,13 @@ public class Target : MonoBehaviour
                 GameManager.Instance.Miss();
             }
             spawn.target = null;
-            for(int i = 0; i < transform.childCount; i++)
-            {
-                transform.GetChild(i).gameObject.SetActive(false);
-            }
-            Debug.Log("Took too long to hit");
+            //code for real target prefabs
+            //for(int i = 0; i < transform.childCount; i++)
+            //{
+            //    transform.GetChild(i).gameObject.SetActive(false);
+            //}
+            targetRenderer.enabled = false;
+            hitbox.enabled = false;
         }
     }
 
@@ -56,15 +61,9 @@ public class Target : MonoBehaviour
         hit = true;
         Debug.Log("TARGET HIT"); 
         //Just made it here for now for a workable build- ask zach the intended way
-        GameManager.Instance.HitOver();
-        Destroy(gameObject);
-    }
-
-    void Hit()
-    {
-        //Destroy(gameObject);
-        //GameManager.Instance.Score();
-        hit = true;
+        GameManager.Instance.Hit();
+        targetRenderer.enabled = false;
+        hitbox.enabled = false;
     }
 
     //if collides with bullet, hit = true and gameManager.Hit()
