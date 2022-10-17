@@ -25,9 +25,9 @@ public class TargetSpawner : MonoBehaviour
         if(target == null && hideTimer < Time.time)
         {   
             score = gameManager.GetScore();
-            var position = new Vector3(Random.Range(-18.5f, 18.5f),Random.Range(-7.0f, 7.0f), 0);
+            var position = new Vector3(Random.Range(-18.5f, 18.5f),Random.Range(-5.0f, 5.0f), 0);
             target = Instantiate(prefab,centre.transform.position + position,Quaternion.identity );
-            target.transform.position = transform.position;
+            //target.transform.position = transform.position;
             target.spawn = this;
             target.lifetime = 1 + (100 - score) / 20;
             Debug.Log("Target spawned with life of " + target.lifetime);
