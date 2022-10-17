@@ -9,6 +9,7 @@ public class TargetSpawner : MonoBehaviour
     public Target target;
     public Target prefab;
     private GameManager gameManager;
+    public GameObject centre;
 
 
     // Start is called before the first frame update
@@ -22,9 +23,10 @@ public class TargetSpawner : MonoBehaviour
     void Update()
     {
         if(target == null && hideTimer < Time.time)
-        {
+        {   
             score = gameManager.GetScore();
-            target = Instantiate(prefab);
+            var position = new Vector3(Random.Range(-18.5f, 18.5f),Random.Range(-7.0f, 7.0f), 0);
+            target = Instantiate(prefab,centre.transform.position + position,Quaternion.identity );
             target.transform.position = transform.position;
             target.spawn = this;
             target.lifetime = 1 + (100 - score) / 20;
