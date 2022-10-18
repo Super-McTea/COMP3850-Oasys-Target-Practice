@@ -11,6 +11,7 @@ public class Target : MonoBehaviour
     private bool active;
     public TargetSpawner spawn;
     private Collider hitbox;
+    public GameObject target;
 
     void Start()
     {
@@ -19,10 +20,14 @@ public class Target : MonoBehaviour
         hit = false;
         active = true;
         hitbox = GetComponent<Collider>();
+        target = GameObject.FindWithTag("Player");
     }
 
     private void Update()
-    {
+    {   
+        Vector3 direction = target.transform.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        transform.rotation = rotation;
         if(scoreTimer < Time.time)
         {
             if(hit)
