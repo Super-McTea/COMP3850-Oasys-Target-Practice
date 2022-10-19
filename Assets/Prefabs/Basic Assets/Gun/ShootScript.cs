@@ -23,7 +23,7 @@ public class ShootScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             GameObject bullet = Instantiate(bulletPrefab, gun.position, Quaternion.identity) as GameObject;
-            bullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
+            bullet.GetComponent<Rigidbody>().AddForce(-transform.right * bulletSpeed);
             float r = Random.value;
             float g = Random.value;
             float b = Random.value;
