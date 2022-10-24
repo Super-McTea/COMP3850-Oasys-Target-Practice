@@ -517,7 +517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BuildType: 2
-  EditorType: 2
+  EditorType: 1
 --- !u!114 &1676988089
 MonoBehaviour:
   m_ObjectHideFlags: 0
