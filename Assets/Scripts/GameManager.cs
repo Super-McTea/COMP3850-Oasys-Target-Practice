@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private float scoreTimer, score, hit, miss;
+
+    // Keeping the history of hits and misses
+    private bool[] scoreHistory;
     static private GameManager instance;
 
     static public GameManager Instance
@@ -19,51 +21,90 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Start()
+    void Awake()
     {
         instance = this;
-        hit = 0;
-        score = 0;
-        miss = 0;
+        // Initialises the score history to be all misses for now.
+        scoreHistory = new bool[50];
+        for (int i = 0; i < scoreHistory.Length; i++)
+        {
+            scoreHistory[i] = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(hit > 0)
-        {
-            score = hit / (hit + miss) * 100;
-        }
-        else
-        {
-            score = 0;
-        }
+        // if(hit > 0)
+        // {
+        //     score = hit / (hit + miss) * 100;
+        // }
+        // else
+        // {
+        //     score = 0;
+        // }
+            // Code above not needed for now.
     }
 
     public void Hit()
     {
-        hit++;
-        Debug.Log("score: " + score);
+        for (int i = 0; i < scoreHistory.Length-1; i++)
+        {
+            // Shuffling the scores down the list, also erasing the first score
+            scoreHistory[i] = scoreHistory[i+1];
+        }
+        // Appending the latest hit to the score.
+        scoreHistory[scoreHistory.Length-1] = true;
+
+        Debug.Log("score: " + GetScore());
     }
 
     public void Miss()
     {
-        miss++;
-        Debug.Log("score: " + score);
+        for (int i = 0; i < scoreHistory.Length-1; i++)
+        {
+            // Shuffling the scores down the list, also erasing the first score
+            scoreHistory[i] = scoreHistory[i+1];
+        }
+        // Appending the latest miss to the score.
+        scoreHistory[scoreHistory.Length-1] = false;
+
+        Debug.Log("score: " + GetScore());
     }
 
-    public void HitOver()
-    {
-        hit--;
-    }
-
-    public void MissOver()
-    {
-        miss--;
-    }
-
+    ///<summary>
+    ///Retrieves the current score as a number between 0 and 100.
+    ///</summary>
     public float GetScore()
     {
-        return score;
+        float score = 0;
+        float scoreSum = 0;
+        for (int i = scoreHistory.Length-1; i >= 0; i--)
+        {
+            if (scoreHistory[i])
+            {
+                // Weighted sum of each score, so that more recent shots have a higher impact on the total than historic shots.
+                scoreSum++;
+                score += WeightedScore(i);
+            }
+        }
+
+        // returns the fraction of hits over total scores (e.g. 5/100 or 98/100)
+        return Mathf.Min(score/scoreHistory.Length * 100, 100);
+    }
+
+    private float WeightedScore(int placeValue)
+    {
+        if (placeValue < 0)
+        {
+            return 0;
+        }
+
+        float a = 0.76f * scoreHistory.Length;
+        float b = 2;
+        return b - (a) / (placeValue + (a/b));
+
+        // float l = 1.255f/scoreHistory.Length + 1;
+        // return Mathf.Pow(l, placeValue);
     }
 }

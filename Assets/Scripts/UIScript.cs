@@ -9,9 +9,10 @@ public class UIScript : MonoBehaviour
     private Transform target_camera;
     [SerializeField]
     private Text scoreText;
+    
     void Update()
     {
         transform.LookAt(2 * transform.position - target_camera.position);
-        scoreText.text = "Score: " + Mathf.Floor(GameManager.Instance.GetScore()) + "%";
+        scoreText.text = "Score: " + (Mathf.Floor(GameManager.Instance.GetScore() * 10))/10 + "%";
     }
 }

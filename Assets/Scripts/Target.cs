@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public float scoreAge, lifetime;
-    private float scoreTimer, lifeTimer;
-    public TargetSpawner spawner;
+    public float lifetime = 3;
+    private float lifeTimer = 0;
     private bool hit;
-    private bool active;
-    public TargetSpawner spawn;
     private Collider hitbox;
     public GameObject target;
 
     void Start()
     {
         lifeTimer = lifetime + Time.time;
-        scoreTimer = scoreAge + Time.time;
         hit = false;
-        active = true;
         hitbox = GetComponent<Collider>();
         target = GameObject.FindWithTag("Player");
     }
@@ -28,33 +23,15 @@ public class Target : MonoBehaviour
         Vector3 direction = target.transform.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
         transform.rotation = rotation;
-        if(scoreTimer < Time.time)
-        {
-            if(hit)
-            {
-                GameManager.Instance.HitOver();
-            }
-            else
-            {
-                GameManager.Instance.MissOver();
-            }
-            Destroy(gameObject);
-        }
 
-        if(lifeTimer < Time.time && active)
+        if(lifeTimer < Time.time)
         {
-            active = false;
             if(!hit)
             {
                 Debug.Log("TARGET MISS");
                 GameManager.Instance.Miss();
             }
-            spawn.target = null;
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                    transform.GetChild(i).gameObject.SetActive(false);
-            }
-            hitbox.enabled = false;
+            Destroy(gameObject);
         }
     }
 
@@ -67,7 +44,6 @@ public class Target : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).gameObject.SetActive(false);
-
         }
         hitbox.enabled = false;
     }
