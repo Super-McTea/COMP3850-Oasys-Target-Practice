@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         // Initialises the score history to be all misses for now.
-        scoreHistory = new bool[50];
+        scoreHistory = new bool[100];
         for (int i = 0; i < scoreHistory.Length; i++)
         {
             scoreHistory[i] = false;
