@@ -10,16 +10,26 @@ public class Target : MonoBehaviour
     private Collider hitbox;
     public GameObject target;
 
+    private Animator anim;
+    private bool spawned;
+
     void Start()
-    {
+    {   
+        anim = GetComponent<Animator>();
         lifeTimer = lifetime + Time.time;
         hit = false;
         hitbox = GetComponent<Collider>();
         target = GameObject.FindWithTag("Player");
+        spawned = false;
     }
 
     private void Update()
     {   
+        if (!spawned)
+        {
+            anim.SetBool("Spawned", true);
+            spawned = true;
+        }
         Vector3 direction = target.transform.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
         transform.rotation = rotation;
@@ -30,8 +40,9 @@ public class Target : MonoBehaviour
             {
                 Debug.Log("TARGET MISS");
                 GameManager.Instance.Miss();
+                anim.SetTrigger("Despawn");
             }
-            Destroy(gameObject);
+            Destroy(gameObject,1.5f);
         }
     }
 

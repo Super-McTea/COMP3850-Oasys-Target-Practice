@@ -319,6 +319,7 @@ GameObject:
   - component: {fileID: 286149192463572963}
   - component: {fileID: 8468249549912028039}
   - component: {fileID: 7253971105873789631}
+  - component: {fileID: 431113765614441038}
   m_Layer: 10
   m_Name: Target 1
   m_TagString: Untagged
@@ -357,10 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629d4f40961bed4438f3726bea673637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreAge: 30
   lifetime: 3
-  spawner: {fileID: 0}
-  spawn: {fileID: 0}
   target: {fileID: 0}
 --- !u!136 &7253971105873789631
 CapsuleCollider:
@@ -376,6 +374,25 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &431113765614441038
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7545948799227805240}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f9be905d4e6998e419dfa573e4d2940b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8802896700724332808
 GameObject:
   m_ObjectHideFlags: 0

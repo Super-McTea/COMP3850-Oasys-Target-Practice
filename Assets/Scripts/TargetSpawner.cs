@@ -9,24 +9,32 @@ public class TargetSpawner : MonoBehaviour
     public Target target;
     public Target prefab;
     private GameManager gameManager;
-    public GameObject centre;
+    //public GameObject centre;
     //public GameObject player;
+
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        player = GameObject.FindWithTag("Player");
         gameManager = FindObjectOfType<GameManager>();
         Restart();
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        //rotate inline to player
+        Vector3 direction = player.transform.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        transform.rotation = rotation;
+
         if(target == null && hideTimer < Time.time)
         {   
             score = gameManager.GetScore();
             var position = new Vector3(Random.Range(-12.5f, 12.5f),Random.Range(-1.0f, 5.0f), 0);            
-            target = Instantiate(prefab,centre.transform.position + position,Quaternion.identity );
+            target = Instantiate(prefab,transform.position + position,Quaternion.identity );
             //target.transform.position = transform.position;
             // target.spawn = this;
             target.lifetime = 1 + (100 - score) / 20;
