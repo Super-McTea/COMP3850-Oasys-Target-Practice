@@ -13,8 +13,25 @@ public class Target : MonoBehaviour
     private Animator anim;
     private bool spawned;
 
+
+    //sfx
+    List<GameObject> prefabList = new List<GameObject>();
+    public GameObject blue;
+    public GameObject red;
+    public GameObject green;
+    public GameObject purple;
+    public GameObject yellow;
+    public GameObject orange;
+
     void Start()
     {   
+        prefabList.Add(blue);
+        prefabList.Add(red);
+        prefabList.Add(green);
+        prefabList.Add(yellow);
+        prefabList.Add(orange);
+        prefabList.Add(purple);
+
         anim = GetComponent<Animator>();
         lifeTimer = lifetime + Time.time;
         hit = false;
@@ -56,6 +73,9 @@ public class Target : MonoBehaviour
         {
             transform.GetChild(i).gameObject.SetActive(false);
         }
+        //get random colour particle for death sfx
+        int prefabIndex = UnityEngine.Random.Range(0,6);
+        Instantiate(prefabList[prefabIndex],transform.position, Quaternion.identity);
         hitbox.enabled = false;
     }
 
