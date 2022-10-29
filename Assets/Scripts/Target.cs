@@ -6,9 +6,11 @@ public class Target : MonoBehaviour
 {
     public float lifetime = 3;
     private float lifeTimer = 0;
+    private float particleTimer = 0.5f;
     private bool hit;
     private Collider hitbox;
     public GameObject target;
+    private ParticleSystem particles;
 
     private Animator anim;
     private bool spawned;
@@ -61,6 +63,15 @@ public class Target : MonoBehaviour
             }
             Destroy(gameObject,1.5f);
         }
+        if(hit)
+        {
+            particleTimer -= Time.deltaTime;
+            if(particleTimer <= 0 && particles != null)
+            {
+                particles.Stop();
+                Destroy(particles, 1.5f);
+            }
+        }
     }
 
     void OnTriggerEnter(Collider col)
@@ -75,7 +86,7 @@ public class Target : MonoBehaviour
         }
         //get random colour particle for death sfx
         int prefabIndex = UnityEngine.Random.Range(0,6);
-        Instantiate(prefabList[prefabIndex],transform.position, Quaternion.identity);
+        particles = Instantiate(prefabList[prefabIndex], transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
         hitbox.enabled = false;
     }
 

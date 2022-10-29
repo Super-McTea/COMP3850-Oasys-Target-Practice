@@ -360,6 +360,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 3
   target: {fileID: 0}
+  blue: {fileID: 1778590676085231067, guid: 02fe74801e980402da187621788bef42, type: 3}
+  red: {fileID: 1778590676085231067, guid: 80f70d662182c48429790cbece75d1d4, type: 3}
+  green: {fileID: 1778590676085231067, guid: 635d48dd54cfd404eb81d613060515e1, type: 3}
+  purple: {fileID: 1778590676085231067, guid: 549bbdbdc0466434791399f9d3e89b25, type: 3}
+  yellow: {fileID: 1778590676085231067, guid: 81cf5e70a45e84fa6835291f7624bc76, type: 3}
+  orange: {fileID: 1778590676085231067, guid: d50fee64ac18843959b97de5a4a8ea29, type: 3}
 --- !u!136 &7253971105873789631
 CapsuleCollider:
   m_ObjectHideFlags: 0
