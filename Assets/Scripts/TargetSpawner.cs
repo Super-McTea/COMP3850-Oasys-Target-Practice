@@ -33,7 +33,7 @@ public class TargetSpawner : MonoBehaviour
         if(target == null && hideTimer < Time.time)
         {   
             score = gameManager.GetScore();
-            var position = new Vector3(Random.Range(-12.5f, 12.5f),Random.Range(-1.0f, 5.0f), 0);            
+            var position = new Vector3(Random.Range(-5.0f, 5.0f),Random.Range(-3.0f, 3.0f), 0);            
             target = Instantiate(prefab,transform.position + position,Quaternion.identity );
             //target.transform.position = transform.position;
             // target.spawn = this;
@@ -50,8 +50,8 @@ public class TargetSpawner : MonoBehaviour
 
         //keep in mind every target will show up within hideMin and hideMax time
         //e.g. min = 10-score, max = 14-score, every target shown every 4 secs
-        hideMin = 2 + (100 - score) / 25;   // Added the score into the hide timer
-        hideMax = 5 + (100 - score) / 25;
+        hideMin = 1 + (100 - score) / 25;   // Added the score into the hide timer
+        hideMax = 3 + (100 - score) / 20;
         hideTimer = Random.Range(hideMin, hideMax) + Time.time;
     }
 }

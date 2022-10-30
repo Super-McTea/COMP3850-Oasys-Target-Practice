@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DestroyWithinTime : MonoBehaviour
 {
+    [SerializeField]
+    private float timeToLive = 2;
     
-
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        Destroy(gameObject, 2);
+        Destroy(gameObject, timeToLive);
     }
 }

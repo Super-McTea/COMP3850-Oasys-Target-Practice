@@ -12,6 +12,8 @@ public class Target : MonoBehaviour
     public GameObject target;
     private ParticleSystem particles;
 
+    private bool hasScored = false;
+
     private Animator anim;
     private bool spawned;
 
@@ -58,19 +60,21 @@ public class Target : MonoBehaviour
             if(!hit)
             {
                 Debug.Log("TARGET MISS");
-                GameManager.Instance.Miss();
-                anim.SetTrigger("Despawn");
+                if (!hasScored)
+                {
+                    GameManager.Instance.Miss();
+                    hasScored = true;
+                }
+                // anim.SetTrigger("Despawn");
+                // Moving the above code so that the target can still register a hit before it completely disappears
             }
-            Destroy(gameObject,1.5f);
+            Destroy(gameObject);
         }
-        if(hit)
+
+        if (lifeTimer-1.5 < Time.time)
         {
-            particleTimer -= Time.deltaTime;
-            if(particleTimer <= 0 && particles != null)
-            {
-                particles.Stop();
-                Destroy(particles, 1.5f);
-            }
+            // Triggers the despawn animation 1.5 seconds before the Target dies
+            anim.SetTrigger("Despawn");
         }
     }
 
@@ -79,7 +83,11 @@ public class Target : MonoBehaviour
         hit = true;
         Debug.Log("TARGET HIT"); 
         //Just made it here for now for a workable build- ask zach the intended way
-        GameManager.Instance.Hit();
+        if (!hasScored)
+        {
+            GameManager.Instance.Hit();
+            hasScored = true;
+        }
         for (int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).gameObject.SetActive(false);
