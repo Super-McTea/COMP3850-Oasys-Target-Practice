@@ -4822,6 +4822,7 @@ GameObject:
   - component: {fileID: 9156476192082978343}
   - component: {fileID: 7970187402082482093}
   - component: {fileID: 3720030517277499398}
+  - component: {fileID: 7043421602975446720}
   m_Layer: 0
   m_Name: ExplosionGreen
   m_TagString: Untagged
@@ -9632,9 +9633,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1545418433139771544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edceab6d9354d154fa2544aed2f96b27, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d5118424f5b51f43a9ecdd0594e7b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToLive: 2
+--- !u!114 &7043421602975446720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545418433139771544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1c9fdc3ea626e408fc1015eefd7656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 8eb39cb92045f1142a2b580e37a77085, type: 3}
 --- !u!1 &4982187358034328892
 GameObject:
   m_ObjectHideFlags: 0

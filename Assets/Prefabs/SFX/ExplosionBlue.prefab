@@ -4831,6 +4831,7 @@ GameObject:
   - component: {fileID: 6107825960025707090}
   - component: {fileID: 8633374388496624290}
   - component: {fileID: 692560940272751778}
+  - component: {fileID: 5588436277513894823}
   m_Layer: 0
   m_Name: ExplosionBlue
   m_TagString: Untagged
@@ -9641,9 +9642,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 8034522808567904435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edceab6d9354d154fa2544aed2f96b27, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d5118424f5b51f43a9ecdd0594e7b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToLive: 2
+--- !u!114 &5588436277513894823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8034522808567904435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1c9fdc3ea626e408fc1015eefd7656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 8eb39cb92045f1142a2b580e37a77085, type: 3}
 --- !u!1 &8521345791502523465
 GameObject:
   m_ObjectHideFlags: 0

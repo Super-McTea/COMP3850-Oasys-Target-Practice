@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletDespawn : MonoBehaviour
+public class BulletDespawnOld : MonoBehaviour
 {
-    [Range(1, 10)]
+    [Range(1, 100)]
     public float killTime = 3;
 
     float time;
@@ -24,4 +24,10 @@ public class BulletDespawn : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    void OnTriggerEnter(Collider col)
+    {   
+        Destroy(this.gameObject);
+        Debug.Log("Bullet Hit!");
+    }
+    
 }

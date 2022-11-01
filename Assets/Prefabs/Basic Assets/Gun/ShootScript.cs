@@ -8,6 +8,8 @@ public class ShootScript : MonoBehaviour
     Transform gun;
     public GameObject bulletPrefab;
     float bulletSpeed;
+
+    private PlaySound audioPlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,11 @@ public class ShootScript : MonoBehaviour
             float b = Random.value;
             Color temp = new Color(r, g, b);
             bullet.GetComponent<Renderer>().material.SetColor("_Color", temp);
+            TrailRenderer tr = bullet.GetComponent<TrailRenderer>();
+            tr.material.color = temp;
+
+            audioPlayer = GetComponent<PlaySound>();
+            StartCoroutine(audioPlayer.PlayAudio(0.3f));
         }
 
     }

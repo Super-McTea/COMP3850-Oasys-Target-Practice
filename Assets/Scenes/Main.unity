@@ -1151,6 +1151,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65ce9ed907104504ca2fc60a87f0b41d, type: 3}
+--- !u!1 &2087146023 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8901477514321912885, guid: ab2259d30e391f643b3bbfbf382a56ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 215692103493624772}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2087146026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087146023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1c9fdc3ea626e408fc1015eefd7656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: b8879c20f72e92046aa29048934df5c7, type: 3}
 --- !u!1 &2090892912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,6 +1734,12 @@ PrefabInstance:
       propertyPath: target_camera
       value: 
       objectReference: {fileID: 1260162969839159243}
+    - target: {fileID: 8901477514321912886, guid: ab2259d30e391f643b3bbfbf382a56ed,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 4463322498408031978, guid: 5be90121b3adaf543b8a35e7bef619ea,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab2259d30e391f643b3bbfbf382a56ed, type: 3}
 --- !u!114 &389286676804538603

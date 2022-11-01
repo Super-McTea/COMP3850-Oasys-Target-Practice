@@ -37,7 +37,7 @@ public class Target : MonoBehaviour
         prefabList.Add(purple);
 
         anim = GetComponent<Animator>();
-        lifeTimer = lifetime + Time.time;
+        lifeTimer = lifetime + Time.time + 1.5f; // The 1.5 is additional time for the despawn animation
         hit = false;
         hitbox = GetComponent<Collider>();
         target = GameObject.FindWithTag("Player");
