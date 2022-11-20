@@ -361,6 +361,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 3
   target: {fileID: 0}
+  bombPrefab: {fileID: 2775034974135985159, guid: 262c2c8f5625d5343a07be2f8e93a22a,
+    type: 3}
   blue: {fileID: 8034522808567904435, guid: dbf3b7a70c3a2ec4480d664ccb7c7e55, type: 3}
   red: {fileID: 3726922366001242236, guid: f439843bf980cc0458d2325c7c0508fe, type: 3}
   green: {fileID: 1545418433139771544, guid: 974a6b9b62cdb3d49b470a36e0034664, type: 3}

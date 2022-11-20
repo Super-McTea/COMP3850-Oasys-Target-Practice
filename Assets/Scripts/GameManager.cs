@@ -43,7 +43,8 @@ public class GameManager : MonoBehaviour
         // {
         //     score = 0;
         // }
-            // Code above not needed for now.
+        // Code above not needed for now.
+        
     }
 
     public void Hit()
@@ -70,6 +71,20 @@ public class GameManager : MonoBehaviour
         scoreHistory[scoreHistory.Length-1] = false;
 
         Debug.Log("score: " + GetScore());
+    }
+
+    // Basically undo one of the positive hits
+    // This is the oonly way for the bomb to have a meaningful effect
+    public void Bomb()
+    {
+        for(int i = 0; i < scoreHistory.Length - 1; i++)
+        {
+            if (scoreHistory[i] == true)
+            {
+                scoreHistory[i] = false;
+                return;
+            }
+        }
     }
 
     ///<summary>

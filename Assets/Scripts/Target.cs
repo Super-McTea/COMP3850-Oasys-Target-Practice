@@ -11,6 +11,9 @@ public class Target : MonoBehaviour
     private Collider hitbox;
     public GameObject target;
     private ParticleSystem particles;
+    private bool isBomb;
+    public GameObject bombPrefab;
+    private GameObject bomb;
 
     private bool hasScored = false;
 
@@ -42,6 +45,19 @@ public class Target : MonoBehaviour
         hitbox = GetComponent<Collider>();
         target = GameObject.FindWithTag("Player");
         spawned = false;
+
+        if(Random.value < 0.15f)
+        {
+            isBomb = true;
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
+            bomb = Instantiate(bombPrefab);
+            bomb.transform.parent = transform;
+            bomb.transform.localPosition = new Vector3(0, 0, 0);
+        }
+        else { isBomb = false; }
     }
 
     private void Update()
@@ -50,14 +66,15 @@ public class Target : MonoBehaviour
         {
             anim.SetBool("Spawned", true);
             spawned = true;
+            
         }
         Vector3 direction = target.transform.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
         transform.rotation = rotation;
 
-        if(lifeTimer < Time.time)
+        if (lifeTimer < Time.time)
         {
-            if(!hit)
+            if(!hit && !isBomb)
             {
                 Debug.Log("TARGET MISS");
                 if (!hasScored)
@@ -83,7 +100,7 @@ public class Target : MonoBehaviour
         hit = true;
         Debug.Log("TARGET HIT"); 
         //Just made it here for now for a workable build- ask zach the intended way
-        if (!hasScored)
+        if (!hasScored && !isBomb)
         {
             GameManager.Instance.Hit();
             hasScored = true;
@@ -96,6 +113,11 @@ public class Target : MonoBehaviour
         int prefabIndex = UnityEngine.Random.Range(0,6);
         particles = Instantiate(prefabList[prefabIndex], transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
         hitbox.enabled = false;
+        if(isBomb)
+        {
+            Debug.Log("bomb lol");
+            GameManager.Instance.Bomb();
+        }
     }
 
     //if collides with bullet, hit = true and gameManager.Hit()
