@@ -9,8 +9,10 @@ public class Target : MonoBehaviour
     private float particleTimer = 0.5f;
     private bool hit;
     private Collider hitbox;
+    public TargetSpawner spawner;
     public GameObject target;
     private ParticleSystem particles;
+    private GameManager gameManager;
     private bool isBomb;
     public GameObject bombPrefab;
     private GameObject bomb;
@@ -31,7 +33,8 @@ public class Target : MonoBehaviour
     public GameObject orange;
 
     void Start()
-    {   
+    {
+        gameManager = FindObjectOfType<GameManager>();
         prefabList.Add(blue);
         prefabList.Add(red);
         prefabList.Add(green);
@@ -46,7 +49,7 @@ public class Target : MonoBehaviour
         target = GameObject.FindWithTag("Player");
         spawned = false;
 
-        if(Random.value < 0.15f)
+        if(Random.value < 0.1f && gameManager.GetScore() > 40)
         {
             isBomb = true;
             for (int i = 0; i < transform.childCount; i++)

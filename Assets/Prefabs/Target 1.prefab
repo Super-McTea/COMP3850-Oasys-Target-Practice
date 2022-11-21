@@ -337,7 +337,7 @@ Transform:
   m_GameObject: {fileID: 7545948799227805240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 735806869473103913}
   - {fileID: 8483452452092366271}
@@ -360,6 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 3
+  spawner: {fileID: 0}
   target: {fileID: 0}
   bombPrefab: {fileID: 2775034974135985159, guid: 262c2c8f5625d5343a07be2f8e93a22a,
     type: 3}
