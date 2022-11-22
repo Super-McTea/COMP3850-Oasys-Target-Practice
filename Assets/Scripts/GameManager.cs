@@ -77,14 +77,21 @@ public class GameManager : MonoBehaviour
     // This is the oonly way for the bomb to have a meaningful effect
     public void Bomb()
     {
-        for(int i = 0; i < scoreHistory.Length - 1; i++)
-        {
-            if (scoreHistory[i] == true)
-            {
-                scoreHistory[i] = false;
-                return;
-            }
-        }
+        // for(int i = 0; i < scoreHistory.Length - 1; i++)
+        // {
+        //     if (scoreHistory[i] == true)
+        //     {
+        //         scoreHistory[i] = false;
+        //         return;
+        //     }
+        // }
+
+        // Previous code was good but this achieves a more devastating outcome, raising the stakes
+        Miss();
+        Miss();
+        Miss();
+        Miss();
+        Miss();
     }
 
     ///<summary>

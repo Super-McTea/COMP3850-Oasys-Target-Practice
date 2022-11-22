@@ -59,6 +59,8 @@ public class Target : MonoBehaviour
             bomb = Instantiate(bombPrefab);
             bomb.transform.parent = transform;
             bomb.transform.localPosition = new Vector3(0, 0, 0);
+
+            lifeTimer += 1f;    // Just so the bombs last longer and are subsequently more dangerous
         }
         else { isBomb = false; }
     }
