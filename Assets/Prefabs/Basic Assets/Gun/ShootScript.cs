@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Liminal.SDK.VR;
+using Liminal.SDK.VR.Input;
 
 public class ShootScript : MonoBehaviour
 {
@@ -22,7 +24,7 @@ public class ShootScript : MonoBehaviour
     void Update()
     {
         //If shoot button detected, spawn a bullet and launch it with random colour in that direction
-        if (Input.GetMouseButtonDown(0))
+        if (VRDevice.Device.PrimaryInputDevice.GetButtonDown(VRButton.Trigger))
         {
             GameObject bullet = Instantiate(bulletPrefab, gun.position, Quaternion.identity) as GameObject;
             bullet.GetComponent<Rigidbody>().AddForce(-transform.right * bulletSpeed);
