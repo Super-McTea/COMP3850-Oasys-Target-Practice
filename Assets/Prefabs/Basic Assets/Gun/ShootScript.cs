@@ -32,9 +32,13 @@ public class ShootScript : MonoBehaviour
             float g = Random.value;
             float b = Random.value;
             Color temp = new Color(r, g, b);
-            bullet.GetComponent<Renderer>().material.SetColor("_Color", temp);
+            Renderer renderer = bullet.GetComponent<Renderer>();
+            renderer.material.SetColor("_Color", temp);
+            renderer.material.SetColor("_EmissionColor", temp);
+
             TrailRenderer tr = bullet.GetComponent<TrailRenderer>();
-            tr.material.color = temp;
+            tr.material.SetColor("_Color", temp);
+            tr.material.SetColor("_EmissionColor", temp);
 
             audioPlayer = GetComponent<PlaySound>();
             StartCoroutine(audioPlayer.PlayAudio(0.3f));
