@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         // Initialises the score history to be all misses for now.
-        scoreHistory = new bool[100];
+        scoreHistory = new bool[150];
         for (int i = 0; i < scoreHistory.Length; i++)
         {
             scoreHistory[i] = false;
@@ -87,10 +87,11 @@ public class GameManager : MonoBehaviour
         // }
 
         // Previous code was good but this achieves a more devastating outcome, raising the stakes
-        Miss();
-        Miss();
-        Miss();
-        Miss();
+
+        for (int i = 0; i < scoreHistory.Length/20; i++)    // This code should take off roughly 5% (100/20) for each bomb.
+        {
+            Miss();
+        }
         Miss();
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TargetSpawner : MonoBehaviour
 {
-    public float score;
+    private float score;
     private float hideMin, hideMax, hideTimer;
     public Target target;
     public Target prefab;

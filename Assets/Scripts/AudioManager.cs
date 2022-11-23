@@ -68,21 +68,21 @@ public class AudioManager : MonoBehaviour
             // While the music isn't trying to fade between levels, directly access the volume and score.
             currentlyPlaying.volume = volume;
             score = GameManager.Instance.GetScore();
-            if (score < 25)
+            if (score > 80)
             {
-                musicState = MusicStates.low;
+                musicState = MusicStates.full;
             }
-            else if (score < 50)
-            {
-                musicState = MusicStates.medium;
-            }
-            else if (score < 75)
+            else if (score < 70 && score > 55)
             {
                 musicState = MusicStates.high;
             }
-            else
+            else if (score < 45 && score > 25)
             {
-                musicState = MusicStates.full;
+                musicState = MusicStates.medium;
+            }
+            else if (score < 15)
+            {
+                musicState = MusicStates.low;
             }
         }
 
